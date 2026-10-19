@@ -1,0 +1,23 @@
+
+{
+  "schemaVersion": 1,
+  "id": "strclient",
+  "version": "${version}",
+  "name": "StrClient",
+  "description": "Modern PvP visuals mod featuring a customizable HUD, visual effects, and a sleek client interface.",
+  "authors": [
+    "StritFei"
+  ],
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.strclient.StrClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
