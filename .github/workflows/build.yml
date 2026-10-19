@@ -1,0 +1,42 @@
+
+name: Build StrClient
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
+
+      - name: Build StrClient
+        run: gradle build --no-daemon
+
+      - name: Upload StrClient JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: StrClient-1.21.11
+          path: build/libs/*.jar
+          if-no-files-found: error
+          
